@@ -15,7 +15,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ resume }) => {
   ].filter(Boolean).join(', ') || resume.location;
 
   return (
-    <div className="bg-slate-300 p-8 overflow-y-auto h-full flex justify-center items-start print:bg-white print:p-0 print:block print:overflow-visible print:h-auto">
+    <div className="bg-slate-300 p-4 md:p-8 overflow-auto h-full flex justify-start md:justify-center items-start print:bg-white print:p-0 print:block print:overflow-visible print:h-auto">
         {/* A4 Page container */}
       <div className="a4-page text-slate-800 print:shadow-none print:m-0 print:w-full">
         

@@ -141,18 +141,19 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
   return (
     <div className="bg-white rounded-lg shadow-sm border border-slate-200 h-full flex flex-col">
       {/* Tabs */}
-      <div className="px-6 pt-6 pb-2">
-        <div className="flex p-1 bg-slate-100/80 rounded-xl">
+      {/* Tabs */}
+      <div className="px-4 md:px-6 pt-4 md:pt-6 pb-2">
+        <div className="flex p-1 bg-slate-100/80 rounded-xl overflow-x-auto no-scrollbar gap-1">
           <button
             onClick={() => setActiveTab("personal")}
-            className={`flex-1 flex items-center justify-center py-2.5 text-base font-medium rounded-lg transition-all duration-200 ${
+            className={`flex-1 min-w-fit px-4 flex items-center justify-center py-2.5 text-sm md:text-base font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
               activeTab === "personal"
                 ? "bg-white text-indigo-600 shadow-sm ring-1 ring-black/5"
                 : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
             }`}
           >
             <User
-              className={`w-5 h-5 mr-2 ${
+              className={`w-4 h-4 md:w-5 md:h-5 mr-2 ${
                 activeTab === "personal" ? "text-indigo-500" : "text-slate-400"
               }`}
             />
@@ -160,14 +161,14 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
           </button>
           <button
             onClick={() => setActiveTab("experience")}
-            className={`flex-1 flex items-center justify-center py-2.5 text-base font-medium rounded-lg transition-all duration-200 ${
+            className={`flex-1 min-w-fit px-4 flex items-center justify-center py-2.5 text-sm md:text-base font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
               activeTab === "experience"
                 ? "bg-white text-indigo-600 shadow-sm ring-1 ring-black/5"
                 : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
             }`}
           >
             <Briefcase
-              className={`w-5 h-5 mr-2 ${
+              className={`w-4 h-4 md:w-5 md:h-5 mr-2 ${
                 activeTab === "experience"
                   ? "text-indigo-500"
                   : "text-slate-400"
@@ -177,14 +178,14 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
           </button>
           <button
             onClick={() => setActiveTab("education")}
-            className={`flex-1 flex items-center justify-center py-2.5 text-base font-medium rounded-lg transition-all duration-200 ${
+            className={`flex-1 min-w-fit px-4 flex items-center justify-center py-2.5 text-sm md:text-base font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
               activeTab === "education"
                 ? "bg-white text-indigo-600 shadow-sm ring-1 ring-black/5"
                 : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
             }`}
           >
             <GraduationCap
-              className={`w-5 h-5 mr-2 ${
+              className={`w-4 h-4 md:w-5 md:h-5 mr-2 ${
                 activeTab === "education" ? "text-indigo-500" : "text-slate-400"
               }`}
             />
@@ -192,14 +193,14 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
           </button>
           <button
             onClick={() => setActiveTab("courses")}
-            className={`flex-1 flex items-center justify-center py-2.5 text-base font-medium rounded-lg transition-all duration-200 ${
+            className={`flex-1 min-w-fit px-4 flex items-center justify-center py-2.5 text-sm md:text-base font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
               activeTab === "courses"
                 ? "bg-white text-indigo-600 shadow-sm ring-1 ring-black/5"
                 : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
             }`}
           >
             <BookOpen
-              className={`w-5 h-5 mr-2 ${
+              className={`w-4 h-4 md:w-5 md:h-5 mr-2 ${
                 activeTab === "courses" ? "text-indigo-500" : "text-slate-400"
               }`}
             />
@@ -207,14 +208,14 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
           </button>
           <button
             onClick={() => setActiveTab("skills")}
-            className={`flex-1 flex items-center justify-center py-2.5 text-base font-medium rounded-lg transition-all duration-200 ${
+            className={`flex-1 min-w-fit px-4 flex items-center justify-center py-2.5 text-sm md:text-base font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
               activeTab === "skills"
                 ? "bg-white text-indigo-600 shadow-sm ring-1 ring-black/5"
                 : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
             }`}
           >
             <Sparkles
-              className={`w-5 h-5 mr-2 ${
+              className={`w-4 h-4 md:w-5 md:h-5 mr-2 ${
                 activeTab === "skills" ? "text-indigo-500" : "text-slate-400"
               }`}
             />

@@ -35,6 +35,7 @@ function App() {
   const [userApiKey, setUserApiKey] = useState<string>('');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+  const [mobileTab, setMobileTab] = useState<'editor' | 'preview'>('editor');
   
   // ATS Modal State
   const [isAtsModalOpen, setIsAtsModalOpen] = useState(false);
@@ -100,12 +101,12 @@ function App() {
     <div className="h-screen flex flex-col overflow-hidden bg-slate-50 text-slate-900 font-sans">
       
       {/* Top Navbar */}
-      <nav className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 z-10 shrink-0 print:hidden">
+      <nav className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-6 z-10 shrink-0 print:hidden">
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowLanding(true)}>
             <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg">
                 IA
             </div>
-            <span className="font-bold text-lg tracking-tight text-slate-800">ResumeAI <span className="text-slate-400 font-normal">Studio</span></span>
+            <span className="font-bold text-lg tracking-tight text-slate-800">ResumeAI <span className="text-slate-400 font-normal hidden sm:inline">Studio</span></span>
         </div>
 
         <div className="flex bg-slate-100 p-1 rounded-lg">
@@ -127,10 +128,10 @@ function App() {
             {activeSection === AppSection.EDITOR && (
                 <button 
                     onClick={() => setIsDonationModalOpen(true)}
-                    className="flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg font-medium"
+                    className="flex items-center px-3 md:px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg font-medium"
                 >
-                    <Coffee className="w-4 h-4 mr-2" />
-                    Ajude no Cafezinho ☕
+                    <Coffee className="w-4 h-4 md:mr-2" />
+                    <span className="hidden md:inline">Ajude no Cafezinho ☕</span>
                 </button>
             )}
             <button 
@@ -151,26 +152,44 @@ function App() {
       {/* Main Content Area */}
       <main className="flex-1 overflow-hidden relative">
         {activeSection === AppSection.EDITOR && (
-             <div className="h-full flex flex-col md:flex-row">
-                <div className="w-full md:w-1/2 lg:w-5/12 p-4 h-full overflow-hidden print:hidden">
-                    <ResumeEditor 
-                        resume={resume} 
-                        setResume={setResume} 
-                        geminiService={geminiService}
-                        onRunAtsScan={() => setIsAtsModalOpen(true)}
-                    />
+             <div className="h-full flex flex-col relative">
+                {/* Mobile Tab Switcher */}
+                <div className="md:hidden flex mx-4 mt-4 mb-2 bg-slate-200 p-1 rounded-lg shrink-0">
+                    <button
+                        onClick={() => setMobileTab('editor')}
+                        className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mobileTab === 'editor' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500'}`}
+                    >
+                        Editor
+                    </button>
+                    <button
+                        onClick={() => setMobileTab('preview')}
+                        className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mobileTab === 'preview' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500'}`}
+                    >
+                        Visualizar
+                    </button>
                 </div>
-                {/* 
-                    Print Styles Logic:
-                    - md:block: Show on medium screens and up normally
-                    - print:block: Always show when printing
-                    - print:fixed print:inset-0: Take up full viewport when printing
-                    - print:z-50: Sit on top of everything
-                    - print:bg-white: Ensure clean background
-                    - print:w-full print:h-auto: Full dimensions
-                */}
-                <div className="hidden md:block w-1/2 lg:w-7/12 h-full bg-slate-200/50 print:block print:fixed print:inset-0 print:z-50 print:bg-white print:w-full print:h-auto print:overflow-visible">
-                    <ResumePreview resume={resume} />
+
+                <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+                    <div className={`${mobileTab === 'editor' ? 'block' : 'hidden md:block'} w-full md:w-1/2 lg:w-5/12 p-4 h-full overflow-hidden print:hidden`}>
+                        <ResumeEditor 
+                            resume={resume} 
+                            setResume={setResume} 
+                            geminiService={geminiService}
+                            onRunAtsScan={() => setIsAtsModalOpen(true)}
+                        />
+                    </div>
+                    {/* 
+                        Print Styles Logic:
+                        - md:block: Show on medium screens and up normally
+                        - print:block: Always show when printing
+                        - print:fixed print:inset-0: Take up full viewport when printing
+                        - print:z-50: Sit on top of everything
+                        - print:bg-white: Ensure clean background
+                        - print:w-full print:h-auto: Full dimensions
+                    */}
+                    <div className={`${mobileTab === 'preview' ? 'block' : 'hidden md:block'} w-full md:w-1/2 lg:w-7/12 h-full bg-slate-200/50 print:block print:fixed print:inset-0 print:z-50 print:bg-white print:w-full print:h-auto print:overflow-visible`}>
+                        <ResumePreview resume={resume} />
+                    </div>
                 </div>
              </div>
         )}
