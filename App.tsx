@@ -5,7 +5,8 @@ import { Dashboard } from './components/Dashboard';
 import { LandingPage } from './components/LandingPage';
 import { GeminiService } from './services/geminiService';
 import { AppSection, ResumeData } from './types';
-import { Layout, FileText, Settings, BarChart3, Key, X, Check, Loader2, Download, Home, ExternalLink } from 'lucide-react';
+import { Layout, FileText, Settings, BarChart3, Key, X, Check, Loader2, Download, Home, ExternalLink, Coffee } from 'lucide-react';
+import { DonationModal } from './components/DonationModal';
 
 // Default initial state
 const INITIAL_RESUME: ResumeData = {
@@ -33,6 +34,7 @@ function App() {
   const [resume, setResume] = useState<ResumeData>(INITIAL_RESUME);
   const [userApiKey, setUserApiKey] = useState<string>('');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   
   // ATS Modal State
   const [isAtsModalOpen, setIsAtsModalOpen] = useState(false);
@@ -124,12 +126,11 @@ function App() {
         <div className="flex items-center space-x-3">
             {activeSection === AppSection.EDITOR && (
                 <button 
-                    onClick={handleDownloadPdf}
-                    className="flex items-center px-3 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-sm transition-colors shadow-sm"
-                    title="Salvar como PDF"
+                    onClick={() => setIsDonationModalOpen(true)}
+                    className="flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg font-medium"
                 >
-                    <Download className="w-4 h-4 mr-2" />
-                    Baixar PDF
+                    <Coffee className="w-4 h-4 mr-2" />
+                    Ajude no Cafezinho ☕
                 </button>
             )}
             <button 
@@ -311,6 +312,12 @@ function App() {
                 </div>
            </div>
       )}
+      {/* Donation Modal */}
+      <DonationModal 
+        isOpen={isDonationModalOpen} 
+        onClose={() => setIsDonationModalOpen(false)} 
+        onConfirmDownload={handleDownloadPdf} 
+      />
     </div>
   );
 }
