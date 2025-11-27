@@ -10,6 +10,12 @@ export class GeminiService {
     }
   }
 
+  setApiKey(apiKey: string) {
+    if (apiKey) {
+      this.ai = new GoogleGenAI({ apiKey });
+    }
+  }
+
   isConfigured(): boolean {
     return this.ai !== null;
   }

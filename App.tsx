@@ -60,6 +60,13 @@ function App() {
             setResume(JSON.parse(storedResume));
         } catch(e) {}
     }
+
+    // Load API Key
+    const storedKey = localStorage.getItem('gemini_api_key');
+    if (storedKey) {
+        setUserApiKey(storedKey);
+        geminiService.setApiKey(storedKey);
+    }
   }, []);
 
   useEffect(() => {
@@ -70,6 +77,7 @@ function App() {
   const handleSaveKey = (key: string) => {
     setUserApiKey(key);
     localStorage.setItem('gemini_api_key', key);
+    geminiService.setApiKey(key);
   };
 
   const handleDownloadPdf = () => {
@@ -135,10 +143,15 @@ function App() {
             )}
             <button 
                 onClick={() => setIsSettingsOpen(true)}
-                className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
-                title="Configurações"
+                className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                    geminiService.isConfigured() 
+                        ? 'text-slate-600 hover:bg-slate-100 border border-slate-200' 
+                        : 'text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 animate-pulse'
+                }`}
+                title="Configurar API Key"
             >
-                <Settings className="w-5 h-5" />
+                <Key className="w-4 h-4 mr-2" />
+                {geminiService.isConfigured() ? 'API Key' : 'Configurar IA'}
             </button>
         </div>
       </nav>
