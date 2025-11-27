@@ -20,7 +20,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ resume }) => {
       <div className="a4-page text-slate-800 print:shadow-none print:m-0 print:w-full">
         
         {/* Header */}
-        <header className="border-b-2 border-slate-800 pb-6 mb-6 flex justify-between items-start gap-6">
+        <div className="resume-header border-b-2 border-slate-800 pb-6 mb-6 flex justify-between items-start gap-6 print:relative print:static">
             <div className="flex-1">
                 <h1 className="text-4xl font-bold tracking-tight text-slate-900 uppercase mb-2">{resume.name || 'Seu Nome'}</h1>
                 <h2 className="text-xl text-slate-600 font-medium mb-4">{resume.title || 'Título Profissional'}</h2>
@@ -56,7 +56,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ resume }) => {
                     />
                 </div>
             )}
-        </header>
+        </div>
 
         {/* Summary */}
         {resume.summary && (
