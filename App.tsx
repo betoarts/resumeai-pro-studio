@@ -60,13 +60,6 @@ function App() {
             setResume(JSON.parse(storedResume));
         } catch(e) {}
     }
-
-    // Load API Key
-    const storedKey = localStorage.getItem('gemini_api_key');
-    if (storedKey) {
-        setUserApiKey(storedKey);
-        geminiService.setApiKey(storedKey);
-    }
   }, []);
 
   useEffect(() => {
@@ -77,7 +70,6 @@ function App() {
   const handleSaveKey = (key: string) => {
     setUserApiKey(key);
     localStorage.setItem('gemini_api_key', key);
-    geminiService.setApiKey(key);
   };
 
   const handleDownloadPdf = () => {
