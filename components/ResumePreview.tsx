@@ -73,7 +73,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ resume }) => {
                 <div className="space-y-4">
                     {resume.experience.map(exp => (
                         <div key={exp.id}>
-                            <div className="flex justify-between items-baseline mb-1">
+                            <div className="flex items-baseline gap-4 mb-1">
                                 <h4 className="font-bold text-lg text-slate-800">{exp.role}</h4>
                                 <span className="text-base text-slate-500 whitespace-nowrap">{exp.startDate} - {exp.endDate}</span>
                             </div>
@@ -94,7 +94,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ resume }) => {
                 <div className="space-y-4">
                     {resume.education.map(edu => (
                         <div key={edu.id}>
-                            <div className="flex justify-between items-baseline mb-1">
+                            <div className="flex items-baseline gap-4 mb-1">
                                 <h4 className="font-bold text-lg text-slate-800">{edu.degree}</h4>
                                 <span className="text-base text-slate-500 whitespace-nowrap">{edu.year}</span>
                             </div>
@@ -112,7 +112,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ resume }) => {
                 <div className="space-y-4">
                     {resume.courses.map(course => (
                         <div key={course.id}>
-                            <div className="flex justify-between items-baseline mb-1">
+                            <div className="flex items-baseline gap-4 mb-1">
                                 <h4 className="font-bold text-lg text-slate-800">{course.name}</h4>
                                 <span className="text-base text-slate-500 whitespace-nowrap">{course.year}</span>
                             </div>

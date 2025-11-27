@@ -3,34 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- SEO & Metadata -->
-    <title>ResumeAI Pro Studio | Criador de Currículos com Inteligência Artificial</title>
-    <meta name="description" content="Crie currículos de alta performance otimizados para ATS usando a inteligência da Google Gemini. Refatore experiências, analise vagas e aumente suas chances de entrevista.">
-    <meta name="keywords" content="currículo, resume builder, inteligência artificial, gemini ai, ats scanner, criador de cv, carreira, emprego">
-    <meta name="author" content="ResumeAI Studio">
-    <meta name="theme-color" content="#4f46e5">
+    <title>
+      ResumeAI Pro Studio | Criador de Currículos com Inteligência Artificial
+    </title>
+    <meta
+      name="description"
+      content="Crie currículos de alta performance otimizados para ATS usando a inteligência da Google Gemini. Refatore experiências, analise vagas e aumente suas chances de entrevista."
+    />
+    <meta
+      name="keywords"
+      content="currículo, resume builder, inteligência artificial, gemini ai, ats scanner, criador de cv, carreira, emprego"
+    />
+    <meta name="author" content="ResumeAI Studio" />
+    <meta name="theme-color" content="#4f46e5" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://resumeai-studio.app/">
-    <meta property="og:title" content="ResumeAI Pro Studio | Otimização de Carreira com IA">
-    <meta property="og:description" content="Pare de ser ignorado por robôs. Use nossa IA para criar currículos blindados para ATS e conquiste sua próxima vaga.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://resumeai-studio.app/" />
+    <meta
+      property="og:title"
+      content="ResumeAI Pro Studio | Otimização de Carreira com IA"
+    />
+    <meta
+      property="og:description"
+      content="Pare de ser ignorado por robôs. Use nossa IA para criar currículos blindados para ATS e conquiste sua próxima vaga."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200"
+    />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="ResumeAI Pro Studio">
-    <meta property="twitter:description" content="Crie currículos de alta performance otimizados para ATS usando IA.">
-    
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="ResumeAI Pro Studio" />
+    <meta
+      property="twitter:description"
+      content="Crie currículos de alta performance otimizados para ATS usando IA."
+    />
+
     <!-- Favicon (Base64 SVG for immediate loading) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M12 18v-6'/%3E%3Cpath d='M9 15l3 3 3-3'/%3E%3C/svg%3E">
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M12 18v-6'/%3E%3Cpath d='M9 15l3 3 3-3'/%3E%3C/svg%3E"
+    />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         background-color: #f8fafc;
       }
       /* Custom Scrollbar */
@@ -52,12 +79,13 @@
         width: 210mm;
         min-height: 297mm;
         background: white;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
         margin: 0 auto;
         padding: 15mm;
         overflow: hidden;
       }
-      
+
       /* Animations */
       @keyframes fade-in-up {
         0% {
@@ -69,24 +97,36 @@
           transform: translateY(0);
         }
       }
-      
+
       @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
       }
 
       .animate-fade-in-up {
         animation: fade-in-up 0.8s ease-out forwards;
       }
-      
+
       .animate-float {
         animation: float 6s ease-in-out infinite;
       }
 
-      .delay-100 { animation-delay: 100ms; }
-      .delay-200 { animation-delay: 200ms; }
-      .delay-300 { animation-delay: 300ms; }
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
 
       /* Print Configurations for PDF Export */
       @media print {
@@ -97,29 +137,64 @@
         body {
           background: white;
         }
+        
+        /* Reset all layout constraints for printing */
+        html, body, #root, main, .overflow-hidden {
+          overflow: visible !important;
+          height: auto !important;
+          position: static !important;
+          display: block !important;
+        }
+
+        /* Hide non-printable elements */
+        nav, .no-print {
+          display: none !important;
+        }
+
         .a4-page {
           margin: 0;
           box-shadow: none;
           width: 100%;
           min-height: auto;
-          page-break-after: always;
+          height: auto;
+          overflow: visible;
+          page-break-after: auto;
+          padding: 20mm;
+        }
+
+        /* Prevent awkward breaks */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          page-break-after: avoid;
+        }
+        p,
+        li {
+          page-break-inside: avoid;
+        }
+        section,
+        div {
+          page-break-inside: auto;
         }
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+    <script type="importmap">
+      {
+        "imports": {
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+          "react/": "https://aistudiocdn.com/react@^19.2.0/",
+          "react": "https://aistudiocdn.com/react@^19.2.0",
+          "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+          "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
