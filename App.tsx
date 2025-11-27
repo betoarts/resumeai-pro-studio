@@ -35,6 +35,7 @@ function App() {
   const [userApiKey, setUserApiKey] = useState<string>('');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+  const [showDownloadTooltip, setShowDownloadTooltip] = useState(true);
   const [mobileTab, setMobileTab] = useState<'editor' | 'preview'>('editor');
   
   // ATS Modal State
@@ -126,13 +127,39 @@ function App() {
 
         <div className="flex items-center space-x-3">
             {activeSection === AppSection.EDITOR && (
-                <button 
-                    onClick={() => setIsDonationModalOpen(true)}
-                    className="flex items-center px-3 md:px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg font-medium"
-                >
-                    <Coffee className="w-4 h-4 md:mr-2" />
-                    <span className="hidden md:inline">Ajude no Cafezinho ☕</span>
-                </button>
+                <div className="relative">
+                    <button 
+                        onClick={() => {
+                            setIsDonationModalOpen(true);
+                            setShowDownloadTooltip(false);
+                        }}
+                        className="flex items-center px-3 md:px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg font-medium"
+                    >
+                        <Coffee className="w-4 h-4 md:mr-2" />
+                        <span className="hidden md:inline">Ajude no Cafezinho ☕</span>
+                    </button>
+                    
+                    {/* PDF Download Tooltip */}
+                    {showDownloadTooltip && (
+                        <div className="absolute top-full right-0 mt-3 w-48 bg-slate-900 text-white text-xs rounded-lg p-3 shadow-xl z-50 animate-bounce-subtle">
+                            <div className="absolute -top-1 right-4 w-2 h-2 bg-slate-900 transform rotate-45"></div>
+                            <div className="flex justify-between items-start">
+                                <p className="font-medium leading-tight">
+                                    Baixe seu PDF aqui! 📄
+                                </p>
+                                <button 
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setShowDownloadTooltip(false);
+                                    }}
+                                    className="text-slate-400 hover:text-white ml-2"
+                                >
+                                    <X className="w-3 h-3" />
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
             )}
             <button 
                 onClick={() => setIsSettingsOpen(true)}
