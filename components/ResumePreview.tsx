@@ -17,7 +17,18 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ resume }) => {
   return (
     <div className="bg-slate-300 p-4 md:p-8 overflow-auto h-full flex justify-start md:justify-center items-start print:bg-white print:p-0 print:block print:overflow-visible print:h-auto">
         {/* A4 Page container */}
-      <div className="a4-page text-slate-800 print:shadow-none print:m-0 print:w-full">
+      <div className="a4-page text-slate-800 print:shadow-none print:m-0 print:w-full relative">
+        
+        {/* Visual Page Break Indicators (Preview Only) */}
+        <div className="absolute top-[297mm] left-0 w-full border-b-2 border-dashed border-red-300 print:hidden pointer-events-none flex justify-end">
+            <span className="bg-red-100 text-red-500 text-xs px-2 py-1 rounded-bl-md font-medium">Fim da Página 1</span>
+        </div>
+        <div className="absolute top-[594mm] left-0 w-full border-b-2 border-dashed border-red-300 print:hidden pointer-events-none flex justify-end">
+            <span className="bg-red-100 text-red-500 text-xs px-2 py-1 rounded-bl-md font-medium">Fim da Página 2</span>
+        </div>
+        <div className="absolute top-[891mm] left-0 w-full border-b-2 border-dashed border-red-300 print:hidden pointer-events-none flex justify-end">
+            <span className="bg-red-100 text-red-500 text-xs px-2 py-1 rounded-bl-md font-medium">Fim da Página 3</span>
+        </div>
         
         {/* Header */}
         <div className="resume-header border-b-2 border-slate-800 pb-6 mb-6 flex justify-between items-start gap-6 print:relative print:static">
