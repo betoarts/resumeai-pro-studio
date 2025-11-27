@@ -5,7 +5,7 @@ import { Dashboard } from './components/Dashboard';
 import { LandingPage } from './components/LandingPage';
 import { GeminiService } from './services/geminiService';
 import { AppSection, ResumeData } from './types';
-import { Layout, FileText, Settings, BarChart3, Key, X, Check, Loader2, Download, Home, ExternalLink, Coffee } from 'lucide-react';
+import { Layout, FileText, Settings, BarChart3, Key, X, Check, Loader2, Download, Upload, Home, ExternalLink, Coffee } from 'lucide-react';
 import { DonationModal } from './components/DonationModal';
 
 // Default initial state
@@ -78,6 +78,43 @@ function App() {
     window.print();
   };
 
+  const handleExportData = () => {
+    const dataStr = JSON.stringify(resume, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `resume-backup-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleImportData = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const content = e.target?.result as string;
+        const parsedData = JSON.parse(content);
+        // Basic validation: check if it has required fields or structure
+        if (parsedData && typeof parsedData === 'object') {
+            setResume(parsedData);
+            alert('Dados importados com sucesso!');
+        } else {
+            alert('Arquivo inválido.');
+        }
+      } catch (error) {
+        alert('Erro ao ler o arquivo. Certifique-se de que é um JSON válido.');
+      }
+    };
+    reader.readAsText(file);
+    // Reset input
+    event.target.value = '';
+  };
+
   const runAtsScan = async () => {
     if (!jobDescription.trim()) return;
     setIsAnalyzing(true);
@@ -99,7 +136,7 @@ function App() {
   }
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-slate-50 text-slate-900 font-sans">
+    <div className="h-screen flex flex-col overflow-hidden bg-slate-50 text-slate-900 font-sans print:h-auto print:overflow-visible print:block">
       
       {/* Top Navbar */}
       <nav className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-6 z-10 shrink-0 print:hidden">
@@ -257,6 +294,31 @@ function App() {
                             Status: {geminiService.isConfigured() ? 'Ativo' : 'Inativo (Chave Ausente)'}
                         </span>
                     </div>
+                </div>
+                
+                {/* Data Management */}
+                <div className="mb-6 pt-6 border-t border-slate-100">
+                    <h4 className="text-xs font-semibold text-slate-500 uppercase mb-3">Gerenciamento de Dados</h4>
+                    <div className="flex gap-3">
+                        <button 
+                            onClick={handleExportData}
+                            className="flex-1 flex items-center justify-center px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors text-sm font-medium border border-indigo-100"
+                        >
+                            <Download className="w-4 h-4 mr-2" /> Backup
+                        </button>
+                        <label className="flex-1 flex items-center justify-center px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium border border-slate-200 cursor-pointer">
+                            <Upload className="w-4 h-4 mr-2" /> Restaurar
+                            <input 
+                                type="file" 
+                                accept=".json"
+                                onChange={handleImportData}
+                                className="hidden"
+                            />
+                        </label>
+                    </div>
+                    <p className="text-xs text-slate-400 mt-2">
+                        Salve um backup dos seus dados para não perder seu progresso.
+                    </p>
                 </div>
 
                 <div className="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200">

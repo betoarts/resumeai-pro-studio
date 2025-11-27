@@ -82,7 +82,7 @@
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
           0 2px 4px -1px rgba(0, 0, 0, 0.06);
         margin: 0 auto;
-        padding: 15mm;
+        padding: 20mm;
         overflow: hidden;
       }
 
@@ -132,18 +132,17 @@
       @media print {
         @page {
           size: A4;
-          margin: 0;
+          margin: 20mm;
         }
         body {
           background: white;
         }
         
         /* Reset all layout constraints for printing */
-        html, body, #root, main, .overflow-hidden {
+        html, body, #root, main {
           overflow: visible !important;
           height: auto !important;
           position: static !important;
-          display: block !important;
         }
 
         /* Hide non-printable elements */
@@ -159,7 +158,7 @@
           height: auto;
           overflow: visible;
           page-break-after: auto;
-          padding: 20mm;
+          padding: 0;
         }
 
         /* Prevent awkward breaks */
@@ -173,7 +172,9 @@
         }
         p,
         li {
-          page-break-inside: avoid;
+          page-break-inside: auto;
+          orphans: 3;
+          widows: 3;
         }
         section,
         div {
